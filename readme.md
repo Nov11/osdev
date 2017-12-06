@@ -8,3 +8,5 @@ Some hints while redo this project:
 * I was coding on a ubuntu 32bit OS back then. So if anyone works on a 64bit OS for now just like I do,
  maybe you can save the effort of building a cross-compiler target 32bit machine by running this:```sudo apt install gcc-multilib```.
 
+
+* --build-id=none is needed or grub cannot find the multiboot header.
