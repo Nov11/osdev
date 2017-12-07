@@ -10,3 +10,8 @@ Some hints while redo this project:
 
 
 * --build-id=none is needed or grub cannot find the multiboot header.
+
+Something not known yet:
+* how to find the absolute address of a symbol in the final elf file? e.g. locate the multiboot header magic value.
+
+
