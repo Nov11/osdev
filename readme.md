@@ -24,3 +24,6 @@ Do check the exit status if using ```grub-file --is-x86-multiboot```. Zero means
 Something not known yet. Better jotting them here as I may forget them in the future. :
 
 
+required:
+xorriso
+qemu

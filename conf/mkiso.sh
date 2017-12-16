@@ -6,3 +6,4 @@ cp $2/myos.bin iso/boot
 cp conf/grub.cfg iso/boot/grub
 
 grub-mkrescue -o myos.iso iso
+echo 'made iso'
