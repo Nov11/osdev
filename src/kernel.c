@@ -27,5 +27,6 @@ extern "C" /* Use C linkage for kernel_main. */
 #include "terminal.h"
 
 void kernel_main(void) {
+    monitor_clear();
     prtf("Hello, kernel World!\n");
 }

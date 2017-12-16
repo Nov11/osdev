@@ -25,5 +25,5 @@ Something not known yet. Better jotting them here as I may forget them in the fu
 
 
 required:
-xorriso
+xorriso(not needed is image is loaded by -kernel)
 qemu
