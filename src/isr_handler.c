@@ -1,6 +1,6 @@
 #include "isr_handler.h"
 
-void(*spec_handler[256])(registers_t) = {0};
+void(*spec_handler[256])(registers_t) = {0};//it's weired that this has to be deliberately set or the value is not null
 
 void isr_handler(registers_t regs)
 {
