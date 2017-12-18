@@ -25,8 +25,14 @@ extern "C" /* Use C linkage for kernel_main. */
 #endif
 
 #include "terminal.h"
+#include "idt.h"
+#include "gdt.h"
 
 void kernel_main(void) {
     monitor_clear();
     prtf("Hello, kernel World!\n");
+    init_gdt();
+    init_idt();
+    asm volatile("int $0x3");
+    asm volatile("int $0x4");
 }

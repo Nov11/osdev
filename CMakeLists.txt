@@ -13,7 +13,13 @@ set(sources
         src/kernel.c
         src/terminal.c
         src/stringops.c
-        src/common.c)
+        src/common.c
+        src/gdt.c
+        src/idt.c
+        src/isr_handler.c
+        src/gdt_flush.s
+        src/idt_flush.s
+        src/isr.s)
 add_executable(myos.bin ${sources})
 add_custom_command(TARGET myos.bin
         POST_BUILD
