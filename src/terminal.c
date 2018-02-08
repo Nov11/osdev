@@ -74,7 +74,7 @@ static void scroll() {
     uint8_t color = vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK); //黑底白字
     uint16_t blank = vga_entry(' ', color);//黑底白字的空格
 
-    if (cursor_x >= 25) {
+    if (cursor_y >= 25) {
         int i;
         for (i = 0; i < 24 * 80; i++) {
             video_memory[i] = video_memory[i + 80];
@@ -84,7 +84,7 @@ static void scroll() {
             video_memory[i] = blank;
         }
 
-        cursor_x = 24;
+        cursor_y = 24;
     }
 }
 

@@ -19,7 +19,6 @@
 #error "This tutorial needs to be compiled with a ix86-elf compiler"
 #endif
 
-
 #if defined(__cplusplus)
 extern "C" /* Use C linkage for kernel_main. */
 #endif
@@ -27,12 +26,15 @@ extern "C" /* Use C linkage for kernel_main. */
 #include "terminal.h"
 #include "idt.h"
 #include "gdt.h"
+#include "timer.h"
 
 void kernel_main(void) {
-    monitor_clear();
-    prtf("Hello, kernel World!\n");
-    init_gdt();
-    init_idt();
-    asm volatile("int $0x3");
-    asm volatile("int $0x4");
+  monitor_clear();
+  prtf("Hello, kernel World!\n");
+  init_gdt();
+  init_idt();
+  asm volatile("sti");
+  init_timer(50);
+//  asm volatile("int $0x20");
+//  asm volatile("int $0x4");
 }

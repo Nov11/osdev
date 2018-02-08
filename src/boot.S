@@ -98,10 +98,10 @@ _start:
 	3) Jump to the hlt instruction if it ever wakes up due to a
 	   non-maskable interrupt occurring or due to system management mode.
 	*/
-	cli
-1:	hlt
-	jmp 1b
-
+	#cli
+#1:	hlt
+	#jmp 1b
+    jmp .
 /*
 Set the size of the _start symbol to the current location '.' minus its start.
 This is useful when debugging or when you implement call tracing.

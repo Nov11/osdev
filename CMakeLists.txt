@@ -19,7 +19,8 @@ set(sources
         src/isr_handler.c
         src/gdt_flush.s
         src/idt_flush.s
-        src/isr.s)
+        src/isr.s
+        src/timer.c)
 add_executable(myos.bin ${sources})
 add_custom_command(TARGET myos.bin
         POST_BUILD
