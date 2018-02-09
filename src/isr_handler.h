@@ -16,5 +16,5 @@ extern void(*spec_handler[256])(registers_t);
 void isr_handler(registers_t regs);
 void irq_handler(registers_t regs);
 
-void reg_handler(void (*)(registers_t), u32int index);
+void register_interrupt_handler(u32int index,void (*)(registers_t) );
 #endif

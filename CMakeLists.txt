@@ -20,7 +20,9 @@ set(sources
         src/gdt_flush.s
         src/idt_flush.s
         src/isr.s
-        src/timer.c)
+        src/timer.c
+        src/kheap.c
+        src/paging.c)
 add_executable(myos.bin ${sources})
 add_custom_command(TARGET myos.bin
         POST_BUILD

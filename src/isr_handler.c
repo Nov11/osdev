@@ -30,7 +30,7 @@ void irq_handler(registers_t regs)
 	
 }
 
-void reg_handler(void (*handler)(registers_t), u32int index)
+void register_interrupt_handler(u32int index,void (*handler)(registers_t))
 {
 	if(index >= 256){
 		PANIC("regs index");
