@@ -52,7 +52,7 @@ void insert_ordered_array(type_t item, ordered_array_t *array) {
 //      tmp = tmp2;
 //    }
 //    array->size++;
-    for(int i = array->size; i > iterator; i--){
+    for (int i = array->size; i > iterator; i--) {
       array->array[i] = array->array[i - 1];
     }
     array->array[iterator] = item;

@@ -30,9 +30,9 @@ extern "C" /* Use C linkage for kernel_main. */
 #include "paging.h"
 #include "kheap.h"
 extern u32int placement_address;
-extern u32int end;
+extern u32int AFTER_BSS_END;
 void kernel_main(void) {
-  placement_address = (u32int) &end;
+  placement_address = (u32int) &AFTER_BSS_END;
   monitor_clear();
   prtf("Hello, kernel World!\n");
   prtf("%x\n", placement_address);

@@ -125,9 +125,6 @@ void initialise_paging() {
     i += 0x1000;
   }
 
-//  for (i = KHEAP_START; i < KHEAP_START+KHEAP_INITIAL_SIZE; i += 0x1000)
-//    get_page(i, 1, kernel_directory);
-
   // Before we enable paging, we must register our page fault handler.
   register_interrupt_handler(14, page_fault);
 
@@ -135,7 +132,6 @@ void initialise_paging() {
   switch_page_directory(kernel_directory);
 
   // Initialise the kernel heap.
-//  kheap = create_heap(KHEAP_START, KHEAP_START+KHEAP_INITIAL_SIZE, 0xCFFFF000, 0, 0);
 
   u32int oneK = kmalloc_a(HEAP_MAX_SIZE);//64k
   kheap = create_heap(oneK, oneK + HEAP_MAX_SIZE, oneK + HEAP_MAX_SIZE, 1, 0);
@@ -181,7 +177,7 @@ void page_fault(registers_t regs) {
   int us = regs.err_code & 0x4;           // Processor was in user-mode?
   int reserved = regs.err_code & 0x8;     // Overwritten CPU-reserved bits of page entry?
   int id = regs.err_code & 0x10;          // Caused by an instruction fetch?
-  (void)id;
+  (void) id;
   // Output an error message.
   monitor_write("Page fault! ( ");
   if (present) {

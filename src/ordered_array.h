@@ -11,14 +11,13 @@
   This array is insertion sorted - it always remains in a sorted state (between calls).
   It can store anything that can be cast to a void* -- so a u32int, or any pointer.
 **/
-typedef void* type_t;
+typedef void *type_t;
 /**
   A predicate should return nonzero if the first argument is less than the second. Else
   it should return zero.
 **/
-typedef s8int (*lessthan_predicate_t)(type_t,type_t);
-typedef struct
-{
+typedef s8int (*lessthan_predicate_t)(type_t, type_t);
+typedef struct {
   type_t *array;
   u32int size;
   u32int max_size;

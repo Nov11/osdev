@@ -7,8 +7,7 @@
 #include "common.h"
 #include "isr_handler.h"
 
-typedef struct page
-{
+typedef struct page {
   u32int present    : 1;   // Page present in memory
   u32int rw         : 1;   // Read-only if clear, readwrite if set
   u32int user       : 1;   // Supervisor level only if clear
@@ -18,13 +17,11 @@ typedef struct page
   u32int frame      : 20;  // Frame address (shifted right 12 bits)
 } page_t;
 
-typedef struct page_table
-{
+typedef struct page_table {
   page_t pages[1024];
 } page_table_t;
 
-typedef struct page_directory
-{
+typedef struct page_directory {
   /**
      Array of pointers to pagetables.
   **/
