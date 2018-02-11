@@ -144,7 +144,7 @@ heap_t *create_heap(u32int start, u32int end_addr, u32int max, u8int supervisor,
   return heap;
 }
 
-static void expand(u32int new_size, heap_t *heap) {
+__attribute__((unused)) static void expand(u32int new_size, heap_t *heap) {
   PANIC("not using expand");
   // Sanity check.
   ASSERT(new_size > heap->end_address - heap->start_address);
@@ -164,7 +164,7 @@ static void expand(u32int new_size, heap_t *heap) {
   heap->end_address = heap->start_address + new_size;
 }
 
-static u32int contract(u32int new_size, heap_t *heap) {
+__attribute__((unused)) static u32int contract(u32int new_size, heap_t *heap) {
   PANIC("not using contract");
   // Sanity check.
   ASSERT(new_size < heap->end_address - heap->start_address);

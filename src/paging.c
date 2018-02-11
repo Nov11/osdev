@@ -38,12 +38,12 @@ static void clear_frame(u32int frame_addr) {
 }
 
 // Static function to test if a bit is set.
-//static u32int test_frame(u32int frame_addr) {
-//  u32int frame = frame_addr / 0x1000;
-//  u32int idx = INDEX_FROM_BIT(frame);
-//  u32int off = OFFSET_FROM_BIT(frame);
-//  return (frames[idx] & (0x1 << off));
-//}
+__attribute__((unused)) static u32int test_frame(u32int frame_addr) {
+  u32int frame = frame_addr / 0x1000;
+  u32int idx = INDEX_FROM_BIT(frame);
+  u32int off = OFFSET_FROM_BIT(frame);
+  return (frames[idx] & (0x1 << off));
+}
 
 // Static function to find the first free frame.
 static u32int first_frame() {
