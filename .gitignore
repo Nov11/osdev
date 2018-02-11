@@ -1,3 +1,6 @@
 cmake-build-debug
 *.iso
 .idea
+log
+build/
+iso/
