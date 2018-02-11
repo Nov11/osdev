@@ -246,6 +246,6 @@ void panic(const char *msg, const char *file, u32int line) {
 }
 
 void panic_assert(const char *file, u32int line, const char *des) {
-  prtf("%s %u %s\n", file, des, line);
+  prtf("%s %u %s\n", file, line, des);
   while (1);
 }

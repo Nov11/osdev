@@ -22,7 +22,8 @@ set(sources
         src/isr.s
         src/timer.c
         src/kheap.c
-        src/paging.c)
+        src/paging.c
+        src/ordered_array.c)
 add_executable(myos.bin ${sources})
 add_custom_command(TARGET myos.bin
         POST_BUILD

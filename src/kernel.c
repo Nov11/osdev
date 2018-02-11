@@ -28,9 +28,11 @@ extern "C" /* Use C linkage for kernel_main. */
 #include "gdt.h"
 #include "timer.h"
 #include "paging.h"
+#include "kheap.h"
 extern u32int placement_address;
 extern u32int end;
 void kernel_main(void) {
+  placement_address = (u32int) &end;
   monitor_clear();
   prtf("Hello, kernel World!\n");
   prtf("%x\n", placement_address);
@@ -40,13 +42,32 @@ void kernel_main(void) {
 //  init_timer(50);
 //  monitor_clear();
 
-  initialise_paging();
+//  initialise_paging();
   monitor_write("Hello, paging world!\n");
 
-  u32int *ptr = (u32int *) 0xA0000000;
-  u32int do_page_fault = *ptr;
-  (void)do_page_fault;
+//  u32int *ptr = (u32int *) 0xA0000000;
+//  u32int do_page_fault = *ptr;
+//  (void)do_page_fault;
 
 //  asm volatile("int $0x20");
 //  asm volatile("int $0x4");
+
+
+
+  u32int a = kmalloc(8);
+  initialise_paging();
+  u32int b = kmalloc(8);
+  u32int c = kmalloc(8);
+  monitor_write("a: ");
+  monitor_write_hex(a);
+  monitor_write(", b: ");
+  monitor_write_hex(b);
+  monitor_write("\nc: ");
+  monitor_write_hex(c);
+
+  kfree((void *) c);
+  kfree((void *) b);
+  u32int d = kmalloc(12);
+  monitor_write(", d: ");
+  monitor_write_hex(d);
 }

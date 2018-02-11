@@ -42,7 +42,7 @@ typedef struct page_directory
   **/
   u32int physicalAddr;
 } page_directory_t;
-
+extern page_directory_t *kernel_directory;
 /**
    Sets up the environment, page directories etc and
    enables paging.
@@ -66,5 +66,6 @@ page_t *get_page(u32int address, int make, page_directory_t *dir);
    Handler for page faults.
 **/
 void page_fault(registers_t regs);
-
+void alloc_frame(page_t *page, int is_kernel_only, int is_writeable);
+void free_frame(page_t *page);
 #endif
