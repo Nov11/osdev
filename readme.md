@@ -23,7 +23,8 @@ Do check the exit status if using ```grub-file --is-x86-multiboot```. Zero means
 
 Something not known yet. Better jotting them here as I may forget them in the future. :
 
-
+seems that grub2 cannot load no-elf format module during booting as grub 1 did.
+dump object file into kernel image's data segment. just to validate functionality. 
 required:
 xorriso(not needed is image is loaded by -kernel)
 qemu

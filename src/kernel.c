@@ -29,9 +29,13 @@ extern "C" /* Use C linkage for kernel_main. */
 #include "timer.h"
 #include "paging.h"
 #include "kheap.h"
+#include "initrd.h"
+#include "multiboot.h"
 extern u32int placement_address;
 extern u32int AFTER_BSS_END;
-void kernel_main(void) {
+extern u32int _binary_initrd_img_start;
+void kernel_main(unsigned long magic, multiboot_info_t* mboot_ptr) {
+  ASSERT(magic == 0x2BADB002);
   placement_address = (u32int) &AFTER_BSS_END;
   monitor_clear();
   prtf("Hello, kernel World!\n");
@@ -70,4 +74,34 @@ void kernel_main(void) {
   u32int d = kmalloc(12);
   monitor_write(", d: ");
   monitor_write_hex(d);
+
+
+//  u32int initrd_location = *((u32int*)mboot_ptr->mods_addr);
+  fs_root = initialise_initrd((u32int)&_binary_initrd_img_start);
+  // list the contents of /
+  int i = 0;
+  struct dirent *node = 0;
+  while ( (node = readdir_fs(fs_root, i)) != 0)
+  {
+    monitor_write("Found file ");
+    monitor_write(node->name);
+    fs_node_t *fsnode = finddir_fs(fs_root, node->name);
+
+    if ((fsnode->flags&0x7) == FS_DIRECTORY)
+    {
+      monitor_write("\n\t(directory)\n");
+    }
+    else
+    {
+      monitor_write("\n\t contents: \"");
+      char buf[256];
+      u32int sz = read_fs(fsnode, 0, 256, (u8int*)buf);
+      int j;
+      for (j = 0; j < sz; j++)
+        monitor_put(buf[j]);
+
+      monitor_write("\"\n");
+    }
+    i++;
+  }
 }

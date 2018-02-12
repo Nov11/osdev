@@ -23,8 +23,20 @@ set(sources
         src/timer.c
         src/kheap.c
         src/paging.c
-        src/ordered_array.c)
+        src/ordered_array.c
+        src/fs.c
+        src/initrd.c)
+
 add_executable(myos.bin ${sources})
+add_custom_command(OUTPUT init.o
+        COMMAND ${PROJECT_SOURCE_DIR}/mkvfs.sh
+        depend init.o)
+if(EXISTS "${PROJECT_SOURCE_DIR}/init.o")
+    target_link_libraries(myos.bin )
+endif()
+#add_executable(generator src/tools/ramGenerator.c)
+#target_link_libraries(generator c)
+
 add_custom_command(TARGET myos.bin
         POST_BUILD
         COMMAND ${PROJECT_SOURCE_DIR}/conf/mkiso.sh ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR})

@@ -4,7 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-
 typedef uint32_t u32int;
 typedef int32_t s32int;
 typedef unsigned short u16int;
@@ -25,7 +24,7 @@ u8int inb(u16int);
 
 u16int inw(u16int);
 
-void memset(void *, u8int, u32int);
+
 
 u32int align(u32int addr);
 

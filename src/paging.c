@@ -3,6 +3,7 @@
 
 #include "paging.h"
 #include "kheap.h"
+#include "stringops.h"
 extern heap_t *kheap;
 // The kernel's page directory
 page_directory_t *kernel_directory = 0;
